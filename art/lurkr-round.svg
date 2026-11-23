@@ -1,0 +1,8 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Generated from art/lurkr.svg by scripts/gen-icon.py. Do not edit by hand. -->
+  <circle cx="256" cy="256" r="256" fill="white"/>
+  <g transform="translate(51.2 51.2) scale(0.8)">
+    <path fill="black" d="M0,416h192v32h-192zM256,416h256v32h-256zM192,448h64v32h-64zM96,384h32v32h-32zM64,320h32v64h-32zM384,384h32v32h-32zM416,320h32v64h-32zM160,352h32v32h-32zM160,288h64v32h-64zM288,288h64v32h-64zM288,352h32v32h-32z"/>
+    <path fill="#0000EE" d="M96,256h32v31h-32zM384,256h32v32h-32zM128,192h32v32h-32zM64,192h96v32h-96zM64,224h96v32h-96zM416,192h32v32h-32zM270,224h146v32h-146zM197,192h219v32h-219zM416,224h32v32h-32zM96,160h64v32h-64zM160,160h256v32h-256zM96,128h320v32h-320zM128,96h256v32h-256zM160,64h192v32h-192zM64,256h32v64h-32zM416,256h32v64h-32z"/>
+  </g>
+</svg>

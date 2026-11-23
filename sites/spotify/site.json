@@ -1,0 +1,10 @@
+{
+  "$schema": "../site.schema.json",
+  "name": "Spotify",
+  "color": "1ED760",
+  "domains": [
+    "open.spotify.com",
+    "spotify.link"
+  ],
+  "view": true
+}

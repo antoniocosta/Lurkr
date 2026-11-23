@@ -1,0 +1,16 @@
+! The "Tap to unmute" pill: Lurkr plays with sound on the first tap
+##.ytp-unmute
+! Its progress bar: Lurkr shows its own while a video plays
+##yt-progress-bar
+! Ads: in the feed, under the video, over the player
+##ytm-promoted-sparkles-web-renderer
+##ytm-promoted-video-renderer
+##ytm-companion-ad-renderer
+##ytm-ad-slot-renderer
+##ad-slot-renderer
+##ytm-display-ad-promo-renderer
+##ytm-paid-content-overlay-renderer
+##.ytp-ad-module
+##.ytp-ad-overlay-container
+! "Get the app" bars
+##ytm-mealbar-promo-renderer

@@ -1,0 +1,11 @@
+{
+  "$schema": "../site.schema.json",
+  "name": "X",
+  "color": "000000",
+  "domains": [
+    "x.com",
+    "twitter.com",
+    "*.twitter.com"
+  ],
+  "view": true
+}

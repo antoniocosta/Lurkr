@@ -1,0 +1,35 @@
+{
+  "$schema": "../site.schema.json",
+  "name": "Facebook",
+  "color": "0866FF",
+  "domains": [
+    "facebook.com",
+    "*.facebook.com",
+    "fb.watch"
+  ],
+  "view": true,
+  "unwrap": [
+    {
+      "host": "l.facebook.com",
+      "param": "u"
+    },
+    {
+      "host": "lm.facebook.com",
+      "param": "u"
+    }
+  ],
+  "resolve": {
+    "hosts": [
+      "fb.watch"
+    ],
+    "paths": [
+      "^/share/"
+    ]
+  },
+  "page": {
+    "hideText": [
+      "^open app$",
+      "^log in$"
+    ]
+  }
+}

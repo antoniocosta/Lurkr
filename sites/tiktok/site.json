@@ -1,0 +1,26 @@
+{
+  "$schema": "../site.schema.json",
+  "name": "TikTok",
+  "color": "000000",
+  "domains": [
+    "tiktok.com",
+    "*.tiktok.com"
+  ],
+  "view": true,
+  "resolve": {
+    "hosts": [
+      "vm.tiktok.com",
+      "vt.tiktok.com"
+    ],
+    "paths": [
+      "^/t/"
+    ]
+  },
+  "rewrite": [
+    {
+      "path": "/(?:video|embed/v2)/(\\d+)",
+      "to": "https://www.tiktok.com/player/v1/$1?music_info=1&description=1&controls=0&progress_bar=0&play_button=0&volume_control=0&fullscreen_button=0&timestamp=0&loop=0&autoplay=1&rel=0&native_context_menu=1",
+      "why": "TikTok's embed player: just the video, no app prompts"
+    }
+  ]
+}

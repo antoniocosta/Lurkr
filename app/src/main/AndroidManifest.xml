@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- To see which app gets a link (browsers, the sites' apps) and to hand links on -->
+    <queries>
+        <!-- The Settings app, to read the words its "Open by default" screen uses (SettingsLabels) -->
+        <intent>
+            <action android:name="android.settings.APP_OPEN_BY_DEFAULT_SETTINGS" />
+            <data android:scheme="package" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+        <!-- Apps that take a shared link, to send a site's links to them -->
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="text/plain" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          Gets the links and passes each one on: to the app picked for its site, else to Lurkr's viewer. Shows nothing
+          but a short "logo → app" card.
+        -->
+        <activity
+            android:name=".RouterActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@style/RouterTheme">
+            <!-- The sites' domains: generated from sites/*/site.json by the build and merged in here -->
+            <!-- "Share → Lurkr" from any app -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          Shows the links (only from the router and the main screen: one entry point, or Android would ask which of
+          Lurkr's screens to use). One at a time, in its own task: a new link replaces the old one.
+          Handles size and fold changes itself, so unfolding the phone doesn't reload (and re-wipe) the page.
+        -->
+        <activity
+            android:name=".ViewerActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity="net.uncorp.lurkr.viewer"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|density|keyboard|keyboardHidden|navigation|uiMode"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+</manifest>

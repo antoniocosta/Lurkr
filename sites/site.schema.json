@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Lurkr site",
+  "description": "One website Lurkr handles: sites/<id>/site.json. The folder name is the site's id (lowercase letters and digits). See README.md, \"Adding a site\".",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "color", "domains", "view"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": {
+      "description": "Shown in Lurkr, e.g. \"Instagram\".",
+      "type": "string",
+      "minLength": 1
+    },
+    "color": {
+      "description": "The logo's colour, hex without #, e.g. \"FF0069\". \"000000\" logos are drawn in the text colour, so they show in dark mode.",
+      "type": "string",
+      "pattern": "^[0-9A-Fa-f]{6}$"
+    },
+    "domains": {
+      "description": "The domains links use. Each one is a checkbox the user ticks in Android's \"Open by default\", so keep only the ones real links use. \"*.example.com\" covers every subdomain but not example.com itself.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^(\\*\\.)?([a-z0-9-]+\\.)+[a-z]{2,}$" }
+    },
+    "view": {
+      "description": "true: Lurkr can show the site itself, without the walls (the user can still route it to another app). false: Lurkr only routes it to the app the user picks.",
+      "type": "boolean"
+    },
+    "unwrap": {
+      "description": "Link wrappers that only redirect (l.facebook.com/l.php?u=…): Lurkr goes straight to the link in the given query parameter.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["host", "param"],
+        "properties": {
+          "host": { "type": "string" },
+          "param": { "type": "string" }
+        }
+      }
+    },
+    "resolve": {
+      "description": "Short links to follow (their redirects) before the rewrites, e.g. vm.tiktok.com/…",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hosts": { "type": "array", "items": { "type": "string" } },
+        "paths": { "description": "Regular expressions on the link's path.", "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "rewrite": {
+      "description": "What Lurkr loads instead of a link it's sent. The first rule whose path matches is used.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path"],
+        "properties": {
+          "path": { "description": "Regular expression on the link's path.", "type": "string" },
+          "to": { "description": "Load this URL instead; $1, $2 … are the path's groups.", "type": "string" },
+          "addQuery": { "description": "Query parameters to add (if not there yet).", "type": "object", "additionalProperties": { "type": "string" } },
+          "why": { "description": "What the rule is for (not used by Lurkr).", "type": "string" }
+        }
+      }
+    },
+    "page": {
+      "description": "What to do on the site's pages, on top of Lurkr's shared cleanup (cookie decline, login walls, app banners, scrolling).",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "click": { "description": "CSS selectors to click once per page, e.g. a \"Continue on web\" link.", "type": "array", "items": { "type": "string" } },
+        "hideText": { "description": "Regular expressions (case-insensitive): a short text matching one hides the overlay layer around it, e.g. \"keep watching\".", "type": "array", "items": { "type": "string" } },
+        "decline": { "description": "Extra cookie-banner button texts that decline optional cookies (exact, case-insensitive).", "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "../site.schema.json",
+  "name": "YouTube",
+  "color": "FF0000",
+  "domains": [
+    "youtube.com",
+    "*.youtube.com",
+    "youtu.be"
+  ],
+  "view": true
+}

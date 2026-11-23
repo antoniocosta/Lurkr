@@ -1,0 +1,38 @@
+{
+  "$schema": "../site.schema.json",
+  "name": "Instagram",
+  "color": "FF0069",
+  "domains": [
+    "instagram.com",
+    "*.instagram.com"
+  ],
+  "view": true,
+  "unwrap": [
+    {
+      "host": "l.instagram.com",
+      "param": "u"
+    }
+  ],
+  "rewrite": [
+    {
+      "path": "^/(p|reel|reels|tv)/",
+      "addQuery": {
+        "l": "1"
+      },
+      "why": "skip the 'Watch this reel in the app' page ('Continue on web' adds l=1)"
+    }
+  ],
+  "page": {
+    "click": [
+      "a[href*='?l=1']"
+    ],
+    "hideText": [
+      "keep watching|continuar a ver|continue a assistir|seguir viendo"
+    ]
+  },
+  "resolve": {
+    "paths": [
+      "^/share/"
+    ]
+  }
+}

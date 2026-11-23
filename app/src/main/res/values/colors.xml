@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand (same as IPeekr and Reedr): flat electric blue + black on white -->
+    <color name="lurkr_blue">#FF0000EE</color>
+    <color name="lurkr_black">#FF000000</color>
+    <color name="ic_launcher_background">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,8 @@
+! Spotify: extra elements to hide, in uBlock Origin / AdGuard cosmetic filter syntax.
+! Lurkr's shared cleanup already declines cookies, hides login walls, "open in app" banners and sign-up buttons,
+! and unlocks scrolling, so this is only for what it misses. One rule per line:
+!   ##selector               on every page of the site
+!   www.example.com##selector  only on that host (and its subdomains)
+! The "Get App" card over the page when a preview plays
+##div:has(> .tippy-box [data-testid="nowPlayingBar-musicPreview-hook"])
+##.tippy-box:has([data-testid="nowPlayingBar-musicPreview-hook"])
